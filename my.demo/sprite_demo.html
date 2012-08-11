@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        スプライトのデモ
+    </title>
+    <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <style type="text/css">
+
+        body {
+            background-color: #333;
+            color: #fff;
+        }
+
+        #draw-target {
+            width: 100%;
+            height: 100%;
+            background-color: #ccf;
+            position: relative;
+        }
+
+        #draw-target div {
+            vertical-align: bottom;
+            line-height: 8;
+        }
+    </style>
+    <script type="text/javascript">
+
+        var positonContena = [
+            {x: 0, y:0}
+        ];
+
+        var DHTMLSprite = function (params) {
+
+            $(positonContena).each(function(data) {
+                if (params.x == data.width && params.height == data.height) {
+
+                }
+                else {
+                    positonContena.push(
+                        {
+                            width: params.width,
+                            height: params.height
+                        }
+                    )
+                }
+            });
+            console.log(positonContena);
+
+            var width = params.width,
+                    height = params.height,
+                    imagesWidth = params.imagesWidth,
+                    $element = params.$drawTarget.append('<div/>').find(':last').append('<div>' + params.itemName + '</div>'),
+                    elemStyle = $element[0].style,
+// 高速化のためMath.floorのローカル参照を持つ
+                    mathFloor = Math.floor;
+            $element.css({
+                position:'absolute',
+                width:width,
+                height:height,
+                backgroundImage:'url(' + params.images + ')'
+            });
+            var that = {
+                draw:function (x, y) {
+                    elemStyle.left = x + 'px';
+                    elemStyle.top = y + 'px';
+                },
+                changeImage:function (index) {
+                    index *= width;
+                    var vOffset = -mathFloor(index / imagesWidth) * height;
+                    var hOffset = -index % imagesWidth;
+                    elemStyle.backgroundPosition = hOffset + 'px ' + vOffset + 'px';
+                    console.log(elemStyle.backgroundPosition);
+                },
+                show:function () {
+                    elemStyle.display = 'block';
+                },
+                hide:function () {
+                    elemStyle.display = 'none';
+                },
+                destroy:function () {
+                    $element.remove();
+                }
+            };
+
+            $element.click(function() {
+                var params = {
+                    images:'images/metal.jpg',
+                    imagesWidth: 0,
+                    itemName: 'ペンチ',
+                    width: 50,
+                    height: 46,
+                    $drawTarget:$('#draw-target')
+                };
+                var sprite1 = DHTMLSprite(params);
+                sprite1.draw(512, 100);
+            });
+
+// DHTMLSpriteのインスタンスを返す
+            return that;
+        };
+        $(document).ready(function () {
+            var params = {
+                images:'images/metal.jpg',
+                imagesWidth: 0,
+                itemName: 'ペンチ',
+                width: 50,
+                height: 46,
+                $drawTarget:$('#draw-target')
+            };
+            var sprite1 = DHTMLSprite(params);
+            var sprite2 = DHTMLSprite(params);
+            sprite2.changeImage(2);
+            sprite1.draw(64, 64);
+            sprite2.draw(352, 192);
+        });
+    </script>
+</head>
+<body>
+<div id="draw-target"></div>
+</body>
+</html>

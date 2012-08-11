@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("start");
+        ProcessThinLine(0, 5 * 60);
+    });
+
+    function ProcessThinLine(tick, delay) {
+        tick = tick + 1;
+
+        var currentPosition = (100 / delay) * tick;
+        $("#thinLine").width(100 - Math.round(currentPosition)); // 100 -> div Width
+
+        window.setTimeout("ProcessThinLine(" + tick + "," + delay + ");", 1000);
+    }
+</script>
+<body>
+<div
+        id="thinLine"
+        style="background-color: #000000; width: 100px; height: 1px;">
+</div>
+</body>
+</html>
