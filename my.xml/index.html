@@ -34,31 +34,40 @@
 <script type="text/javascript">
 
     var positonContena = [
-        {x: 0, y:0}
+        //{x: 0, y:0}
     ];
 
     var DHTMLSprite = function (params) {
 
-        $(positonContena).each(function(data) {
-            if (params.x == data.width && params.height == data.height) {
-
-            }
-            else {
-                positonContena.push({
-                        width: params.width,
-                        height: params.height
-                });
+        var exist = false;
+        $(positonContena).each(function(index, data) {
+            if (params.x == data.x && params.y == data.y) {
+                console.log("obj already exist!!");
+                exist = true;
             }
         });
-        console.log(positonContena);
 
-        var width = params.width,
-                height = params.height,
-                imagesWidth = params.imagesWidth,
-                $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + params.itemName + '</div>'),
-                elemStyle = $element[0].style,
+        if (exist) {
+            return null;
+        }
+        if (!positonContena.length || !exist) {
+            positonContena.push({
+                x:params.x,
+                y:params.y
+            });
+        }
+
+        //console.log(positonContena);
+
+        var imagesWidth = params.imagesWidth,
+            $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + params.itemName + '</div>'),
+            elemStyle = $element[0].style,
 // 高速化のためMath.floorのローカル参照を持つ
                 mathFloor = Math.floor;
+
+        elemStyle.left = params.x + 'px';
+        elemStyle.top = params.y + 'px';
+
         $element.css({
             position:'absolute'
             //width:width,
@@ -67,16 +76,33 @@
         });
         var that = {
             draw:function (x, y) {
+
+
+                var exist = false;
+                $(positonContena).each(function(index, data) {
+                    if (x == data.x && y == data.y) {
+                        console.log("obj already exist!!");
+                        exist = true;
+                    }
+                });
+
+                if (!positonContena.length || !exist) {
+                    positonContena.push({
+                        x:x,
+                        y:y
+                    });
+                }
+
                 elemStyle.left = x + 'px';
                 elemStyle.top = y + 'px';
             },
-            changeImage:function (index) {
-                index *= width;
-                var vOffset = -mathFloor(index / imagesWidth) * height;
-                var hOffset = -index % imagesWidth;
-                elemStyle.backgroundPosition = hOffset + 'px ' + vOffset + 'px';
-                console.log(elemStyle.backgroundPosition);
-            },
+//            changeImage:function (index) {
+//                index *= width;
+//                var vOffset = -mathFloor(index / imagesWidth) * height;
+//                var hOffset = -index % imagesWidth;
+//                elemStyle.backgroundPosition = hOffset + 'px ' + vOffset + 'px';
+//                console.log(elemStyle.backgroundPosition);
+//            },
             show:function () {
                 elemStyle.display = 'block';
             },
@@ -88,18 +114,43 @@
             }
         };
 
+        console.log('children');
+        var children = params.children || null;
+        if (children && children.length) {
+        console.log(children[0]);
         $element.click(function() {
-            var params = {
-                image:'images/metal.jpg',
-                imagesWidth: 0,
-                itemName: 'ペンチ',
-                width: 50,
-                height: 46,
-                $drawTarget:$('#draw-target')
-            };
-            var sprite1 = DHTMLSprite(params);
-            sprite1.draw(512, 100);
+
+            $(children[0]).children().each(function(index, item) {
+//               console.log(item);
+//            });
+//
+//
+//
+//            var items = $(children[0]).find('children > item');
+//            console.log(items);
+//            $(items).each(function(index, item) {
+                console.log("^^^^^^^^^^^^");
+                console.log(item);
+                var itemName = $(item).find('itemName')[0].textContent;
+                var image = $(item).find('image')[0].textContent;
+                var x = $(item).find('x')[0].textContent;
+                var y = $(item).find('y')[0].textContent;
+
+                var children = $(item).find('children');
+                var params = {
+                    itemName : itemName,
+                    image: image,
+                    imagesWidth: 0,
+                    x: x,
+                    y: y,
+                    children: children,
+                    $drawTarget:$('#draw-target')
+                }
+                var sprite = DHTMLSprite(params);
+            });
         });
+
+        }
 
 // DHTMLSpriteのインスタンスを返す
         return that;
@@ -115,53 +166,39 @@
                 parseXml(xml);
             }
         });
-
-        var params = {
-            image:'images/metal.jpg',
-            imagesWidth: 0,
-            itemName: 'ペンチ',
-            width: 50,
-            height: 46,
-            $drawTarget:$('#draw-target')
-        };
-        var sprite1 = DHTMLSprite(params);
-        var sprite2 = DHTMLSprite(params);
-        sprite2.changeImage(2);
-        sprite1.draw(64, 64);
-        sprite2.draw(352, 192);
     });
 
     var parseXml = function (xml) {
-        var items = $(xml).find('root > item');
-        console.log(items);
-        $(items).each(function (index, item) {
-            console.log(index + " : " + item);
-            console.log($(item).find('itemName')[0].textContent);
-            console.log($(item).find('image')[0].textContent);
-            console.log($(item).find('width')[0].textContent);
-            console.log($(item).find('height')[0].textContent);
-            console.log($(item).find('x')[0].textContent);
-            console.log($(item).find('y')[0].textContent);
 
+        var baseItem = $(xml).find('root > BaseItem');
+        var baseSprite = DHTMLSprite({
+            itemName: "",
+            image: $(baseItem).find('image')[0].textContent,
+            $drawTarget:$('#draw-target')
+        });
+        baseSprite.draw($(baseItem).find('x')[0].textContent, $(baseItem).find('y')[0].textContent);
+
+        var items = $(xml).find('root > item');
+        $(items).each(function (index, item) {
             var itemName = $(item).find('itemName')[0].textContent;
             var image = $(item).find('image')[0].textContent;
-            var width = $(item).find('width')[0].textContent;
-            var height = $(item).find('height')[0].textContent;
             var x = $(item).find('x')[0].textContent;
             var y = $(item).find('y')[0].textContent;
 
+            var children = $(item).find('item > children');
             var params = {
                 itemName : itemName,
                 image: image,
                 imagesWidth: 0,
-                width: width,
-                height: height,
+                x: x,
+                y: y,
+                children: children,
                 $drawTarget:$('#draw-target')
             }
             var sprite = DHTMLSprite(params);
-            sprite.draw(x, y);
+            //sprite.draw(x, y);
 
-            console.log($(item).find('children > item'));
+            //console.log($(item).find('children > item'));
         })
     };
 </script>
