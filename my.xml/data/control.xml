@@ -36,13 +36,13 @@
                     <item>
                         <itemName>ビス</itemName>
                         <image>images/bis.jpg</image>
-                        <x>950</x>
+                        <x>1000</x>
                         <y>0</y>
                     </item>
                     <item>
                         <itemName>ボルト</itemName>
                         <image>images/bolt.jpg</image>
-                        <x>950</x>
+                        <x>1000</x>
                         <y>150</y>
                     </item>
                 </children>
@@ -67,6 +67,20 @@
         <image>images/wood.jpg</image>
         <x>520</x>
         <y>100</y>
+        <children>
+            <item>
+                <itemName>ビス</itemName>
+                <image>images/bis.jpg</image>
+                <x>400</x>
+                <y>0</y>
+            </item>
+            <item>
+                <itemName>ボルト</itemName>
+                <image>images/bolt.jpg</image>
+                <x>620</x>
+                <y>0</y>
+            </item>
+        </children>
     </item>
 
     <item>
