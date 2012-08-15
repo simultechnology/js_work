@@ -8,6 +8,13 @@
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <body>
+<style type="text/css">
+    div#draw-target {
+        /* top: 350px;
+        left: 350px;
+        position: absolute; */
+    }
+</style>
 <div id="draw-target">
 
 </div>
@@ -16,6 +23,11 @@
 <script type="text/javascript">
 
     var positonContena = [];
+
+    var centerPoint = {
+        top: 0,
+        left: 0
+    };
 
     $(document).ready(function () {
         $.ajax({
@@ -68,6 +80,35 @@
         var children = params.children || null;
         if (children && children.length) {
             $element.click(function () {
+                var top = elemStyle.top;
+                top = Number(top.replace("px", ""));
+
+                var left = elemStyle.left;
+                left = Number(left.replace("px", ""));
+
+                var moveDistance = {
+                    top: top - centerPoint.top,
+                    left: left - centerPoint.left
+                };
+
+                console.log("top : " + moveDistance.top);
+                console.log("left : " + moveDistance.left);
+
+        $( "#draw-target" ).animate({
+            //left: moveDistance.left
+            left: -moveDistance.left,
+            top: -moveDistance.top
+        }, {
+            duration: 1000,
+            step: function( now, fx ){
+                //console.log(now);
+                $( "#draw-target" ).css( "left", now );
+                $( "#draw-target" ).css( "top", now );
+            }
+        });
+                //$('#draw-target').animate({ left: left });
+                //$('html, body').animate({ scrollLeft: left });
+
 
                 $(children[0]).children().each(function (index, item) {
                     var sprite = makeChildItemFromParent(item);
@@ -85,7 +126,12 @@
             image:$(baseItem).find('image')[0].textContent,
             $drawTarget:$('#draw-target')
         });
-        baseSprite.draw($(baseItem).find('x')[0].textContent, $(baseItem).find('y')[0].textContent);
+        var x = $(baseItem).find('x')[0].textContent;
+        var y = $(baseItem).find('y')[0].textContent;
+
+        baseSprite.draw(x, y);
+
+        centerPoint = {top: y, left: x};
 
         // ルートItem周りのItem表示処理
         var items = $(xml).find('root > item');
@@ -122,5 +168,24 @@
         return exist;
     };
 </script>
+<script>
 
+    //$('html, body').scrollTop(500);
+    $('html, body').animate({ scrollTop: 1000 });
+    //$('#draw-target').animate({ left: 100 });
+//
+//    $( "#go" ).click(function(){
+//        $('#draw-target').animate({ top: 300 });
+//        $( "#draw-target" ).animate({
+//            left: 100,
+//            bottom:200
+//        }, {
+//            duration: 1000,
+//            step: function( now, fx ){
+//                console.log(now);
+//                $( "#draw-target" ).css( "left", now );
+//            }
+//        });
+//    });
+</script>
 
