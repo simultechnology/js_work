@@ -69,8 +69,6 @@
         }
 
         var itemName = params.itemName.replace('\n', '<br>')
-        console.log(itemName);
-
         var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + itemName + '</div>'),
             elemStyle = $element[0].style;
 
@@ -94,31 +92,38 @@
             },
             destroy:function () {
                 $element.remove();
+            },
+            getElement:function() {
+                return $element;
             }
         };
 
         var children = params.children || null;
         if (children && children.length) {
             $element.click(function () {
+
+                var top = elemStyle.top;
+                top = Number(top.replace("px", ""));
+                var left = elemStyle.left;
+                left = Number(left.replace("px", ""));
+                var moveDistance = {
+                    top: top - centerPoint.top,
+                    left: left - centerPoint.left
+                };
+                $("#left-top-point").animate({
+                    left: -moveDistance.left,
+                    top: -moveDistance.top
+
+                });
+
                 var childItem = $.data($element, "childItem");
                 var childVisible = $.data($element, "childVisible");
-                console.log("childItem");
-                console.log(childVisible);
                 if (childItem) {
                     console.log(childItem);
+                    console.log(childVisible);
                     if (childVisible) {
                         $(childItem).each(function(index, item) {
-                            console.log(item);
-
-                            var cItem = $.data(item, "childItem");
-                            console.log(cItem);
-                            if (cItem) {
-                                $(cItem).each(function(idx, itm) {
-                                    itm.hide();
-                                });
-                            }
-                            item.hide();
-
+                            makeChildItemInvisible(item);
                         });
                         $.data($element, "childVisible", false);
                     }
@@ -131,39 +136,6 @@
                     return;
                 }
 
-                var top = elemStyle.top;
-                top = Number(top.replace("px", ""));
-
-                var left = elemStyle.left;
-                left = Number(left.replace("px", ""));
-
-                var moveDistance = {
-                    top: top - centerPoint.top,
-                    left: left - centerPoint.left
-                };
-
-           $("#left-top-point").animate({
-               left: -moveDistance.left,
-               top: -moveDistance.top
-
-           });
-
-
-//        $( "#draw-target" ).animate({
-//            //left: moveDistance.left
-//            left: -moveDistance.left,
-//            top: -moveDistance.top
-//        }, {
-//            duration: 1000,
-//            step: function( now, fx ){
-//                //console.log(now);
-//                $( "#draw-target" ).css( "left", now );
-//                $( "#draw-target" ).css( "top", now );
-//            }
-//        });
-                //$('#draw-target').animate({ left: left });
-                //$('html, body').animate({ scrollLeft: left });
-
                 var childContainer = [];
                 $(children[0]).children().each(function (index, item) {
                     var sprite = makeChildItemFromParent(item);
@@ -174,6 +146,25 @@
             });
         }
         return that;
+    };
+
+    var makeChildItemInvisible = function(item) {
+        // item内のelementを取得
+        var cElem = item.getElement();
+        var cItem = $.data(cElem, "childItem");
+        var cVisible = $.data(cElem, "childVisible");
+        console.log(cVisible);
+        console.log(cItem);
+        if (cVisible) {
+            if (cItem) {
+                $(cItem).each(function(idx, itm) {
+                    makeChildItemInvisible(itm);
+                    itm.hide();
+                });
+            }
+            $.data(cElem, "childVisible", false);
+        }
+        item.hide();
     };
 
     var parseXml = function (xml) {
@@ -226,24 +217,3 @@
         return exist;
     };
 </script>
-<script>
-
-    //$('html, body').scrollTop(500);
-    //$('html, body').animate({ scrollTop: 1000 });
-    //$('#draw-target').animate({ left: 100 });
-//
-//    $( "#go" ).click(function(){
-//        $('#draw-target').animate({ top: 300 });
-//        $( "#draw-target" ).animate({
-//            left: 100,
-//            bottom:200
-//        }, {
-//            duration: 1000,
-//            step: function( now, fx ){
-//                console.log(now);
-//                $( "#draw-target" ).css( "left", now );
-//            }
-//        });
-//    });
-</script>
-
