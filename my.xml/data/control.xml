@@ -102,7 +102,7 @@
                 <y>200</y>
                 <children>
                     <item>
-                        <itemName>インパクト用ハイス\nホールソー</itemName>
+                        <itemName>インパクト用ハイスホールソー</itemName>
                         <image>images/holso.png</image>
                         <x>970</x>
                         <y>200</y>
@@ -137,12 +137,28 @@
                 <image>images/bis.jpg</image>
                 <x>370</x>
                 <y>0</y>
+                <children>
+                    <item>
+                        <itemName>力こぶビット</itemName>
+                        <image>images/bit.png</image>
+                        <x>370</x>
+                        <y>-200</y>
+                    </item>
+                </children>
             </item>
             <item>
                 <itemName>ボルト</itemName>
                 <image>images/bolt.jpg</image>
                 <x>590</x>
                 <y>0</y>
+                <children>
+                    <item>
+                        <itemName>ちょい曲げソケット</itemName>
+                        <image>images/socket.png</image>
+                        <x>590</x>
+                        <y>-200</y>
+                    </item>
+                </children>
             </item>
         </children>
     </item>
@@ -152,5 +168,27 @@
         <image>images/tile.jpg</image>
         <x>320</x>
         <y>200</y>
+        <children>
+            <item>
+                <itemName>穴あけ</itemName>
+                <image>images/driver.jpg</image>
+                <x>170</x>
+                <y>150</y>
+                <children>
+                    <item>
+                        <itemName>溶着ダイアモンドドリルビット(丸軸タイプ)</itemName>
+                        <image>images/diamond_drill_bit_circle.png</image>
+                        <x>20</x>
+                        <y>70</y>
+                    </item>
+                    <item>
+                        <itemName>溶着ダイアモンドドリルビット(六画軸タイプ)</itemName>
+                        <image>images/diamond_drill_bit.png</image>
+                        <x>20</x>
+                        <y>230</y>
+                    </item>
+                </children>
+            </item>
+        </children>
     </item>
 </root>
