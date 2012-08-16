@@ -12,6 +12,22 @@
         <image>images/mortar.jpg</image>
         <x>370</x>
         <y>400</y>
+        <children>
+            <item>
+                <itemName>穴あけ</itemName>
+                <image>images/driver.jpg</image>
+                <x>290</x>
+                <y>550</y>
+                <children>
+                    <item>
+                        <itemName>モルタル用ドリル</itemName>
+                        <image>images/mortar_drill.png</image>
+                        <x>190</x>
+                        <y>700</y>
+                    </item>
+                </children>
+            </item>
+        </children>
     </item>
 
     <item>
@@ -19,6 +35,22 @@
         <image>images/concrete.jpg</image>
         <x>620</x>
         <y>400</y>
+        <children>
+            <item>
+                <itemName>穴あけ</itemName>
+                <image>images/driver.jpg</image>
+                <x>700</x>
+                <y>550</y>
+                <children>
+                    <item>
+                        <itemName>溶着DDコア</itemName>
+                        <image>images/dd_core.png</image>
+                        <x>800</x>
+                        <y>700</y>
+                    </item>
+                </children>
+            </item>
+        </children>
     </item>
 
     <item>

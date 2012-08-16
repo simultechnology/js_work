@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<!--<script type="text/javascript"-->
-        <!--src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
-<script type="text/javascript" src="js/jquery-1.8.0.js"></script>
+<script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery-1.8.0.js"></script>-->
+<script type="text/javascript" src="js/jquery.svg.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <style type="text/css">
-    div#draw-target {
-        /* top: 350px;
-        left: 350px;
-        position: absolute; */
+    div#canv-target {
+        position: absolute;
+        left: -1000px;
+        top: -1000px;
+        width: 3000px;
+        height: 3000px;
+
     }
 
     div#overall-container {
@@ -30,7 +34,9 @@
 <div id="overall-container">
     <div style="z-index: 300; position: absolute; border-width: 0px; overflow: hidden; width: 1000px; height: 600px; ">
         <div style="z-index: 300; position: absolute; top: 0px; left: 0px; " id="left-top-point">
-            <div id="draw-target" style="z-index: 100"></div>
+            <div id="draw-target" style="z-index: 100">
+                <div id="canv-target"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -45,7 +51,11 @@
         left: 0
     };
 
+    $("#canv-target").svg();
+    var svg = $('#canv-target').svg('get');
+
     $(document).ready(function () {
+
         $.ajax({
             type:'GET',
             url:'data/control.xml',
@@ -95,13 +105,28 @@
             },
             getElement:function() {
                 return $element;
+            },
+            getElemStyle:function() {
+                return elemStyle;
+            },
+            drawLine:function(origX, origY) {
+                var destX = elemStyle.left;
+                destX = destX.replace("px", "");
+                var destY = elemStyle.top;
+                destY = destY.replace("px", "");
+                console.log("org");
+                console.log(origX);
+                console.log(origY);
+                console.log("dest");
+                console.log(destX);
+                console.log(destY);
+                svg.line(origX + 1000, origY + 1000, Number(destX) + 1000, Number(destY) + 1000, {stroke: '#999999', strokeWidth: 1});
             }
         };
 
         var children = params.children || null;
         if (children && children.length) {
             $element.click(function () {
-
                 var top = elemStyle.top;
                 top = Number(top.replace("px", ""));
                 var left = elemStyle.left;
@@ -139,6 +164,9 @@
                 var childContainer = [];
                 $(children[0]).children().each(function (index, item) {
                     var sprite = makeChildItemFromParent(item);
+                    console.log(top);
+                    console.log(left);
+                    sprite.drawLine(left, top);
                     childContainer.push(sprite);
                 });
                 $.data($element, "childItem", childContainer);
@@ -153,8 +181,6 @@
         var cElem = item.getElement();
         var cItem = $.data(cElem, "childItem");
         var cVisible = $.data(cElem, "childVisible");
-        console.log(cVisible);
-        console.log(cItem);
         if (cVisible) {
             if (cItem) {
                 $(cItem).each(function(idx, itm) {
@@ -186,6 +212,15 @@
         var items = $(xml).find('root > item');
         $(items).each(function (index, item) {
             var sprite = makeChildItemFromParent(item);
+
+            var beginX = Number(centerPoint.left) + 50;
+            var beginY = Number(centerPoint.top) + 70;
+            var elemStyle = sprite.getElemStyle();
+            var destX = elemStyle.left;
+            destX = destX.replace("px", "");
+            var destY = elemStyle.top;
+            destY = destY.replace("px", "");
+            svg.line(beginX + 1000, beginY + 1000, Number(destX) + 1000, Number(destY) + 1000, {stroke: '#999999', strokeWidth: 1});
         });
     };
 
