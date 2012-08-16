@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<script type="text/javascript"
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--<script type="text/javascript"-->
+        <!--src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+<script type="text/javascript" src="js/jquery-1.8.0.js"></script>
 <link rel="stylesheet" href="css/style.css">
-<body>
 <style type="text/css">
     div#draw-target {
         /* top: 350px;
         left: 350px;
         position: absolute; */
     }
-</style>
-<div id="draw-target">
 
+    div#overall-container {
+        border:1px solid #777777;
+        width:1000px;
+        height:600px;
+        top:0px;
+        left:0px;
+        position:absolute;
+        z-index: 400;
+        background-color: #333;
+    }
+</style>
+<body>
+<div id="overall-container">
+    <div style="z-index: 300; position: absolute; border-width: 0px; overflow: hidden; width: 1000px; height: 600px; ">
+        <div style="z-index: 300; position: absolute; top: 0px; left: 0px; " id="left-top-point">
+            <div id="draw-target" style="z-index: 100"></div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
@@ -52,7 +68,10 @@
             });
         }
 
-        var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + params.itemName + '</div>'),
+        var itemName = params.itemName.replace('\n', '<br>')
+        console.log(itemName);
+
+        var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + itemName + '</div>'),
             elemStyle = $element[0].style;
 
         elemStyle.left = params.x + 'px';
@@ -61,6 +80,7 @@
         $element.css({
             position:'absolute'
         });
+
         var that = {
             draw:function (x, y) {
                 elemStyle.left = x + 'px';
@@ -80,6 +100,37 @@
         var children = params.children || null;
         if (children && children.length) {
             $element.click(function () {
+                var childItem = $.data($element, "childItem");
+                var childVisible = $.data($element, "childVisible");
+                console.log("childItem");
+                console.log(childVisible);
+                if (childItem) {
+                    console.log(childItem);
+                    if (childVisible) {
+                        $(childItem).each(function(index, item) {
+                            console.log(item);
+
+                            var cItem = $.data(item, "childItem");
+                            console.log(cItem);
+                            if (cItem) {
+                                $(cItem).each(function(idx, itm) {
+                                    itm.hide();
+                                });
+                            }
+                            item.hide();
+
+                        });
+                        $.data($element, "childVisible", false);
+                    }
+                    else {
+                        $(childItem).each(function(index, item) {
+                            item.show();
+                        });
+                        $.data($element, "childVisible", true);
+                    }
+                    return;
+                }
+
                 var top = elemStyle.top;
                 top = Number(top.replace("px", ""));
 
@@ -91,28 +142,35 @@
                     left: left - centerPoint.left
                 };
 
-                console.log("top : " + moveDistance.top);
-                console.log("left : " + moveDistance.left);
+           $("#left-top-point").animate({
+               left: -moveDistance.left,
+               top: -moveDistance.top
 
-        $( "#draw-target" ).animate({
-            //left: moveDistance.left
-            left: -moveDistance.left,
-            top: -moveDistance.top
-        }, {
-            duration: 1000,
-            step: function( now, fx ){
-                //console.log(now);
-                $( "#draw-target" ).css( "left", now );
-                $( "#draw-target" ).css( "top", now );
-            }
-        });
+           });
+
+
+//        $( "#draw-target" ).animate({
+//            //left: moveDistance.left
+//            left: -moveDistance.left,
+//            top: -moveDistance.top
+//        }, {
+//            duration: 1000,
+//            step: function( now, fx ){
+//                //console.log(now);
+//                $( "#draw-target" ).css( "left", now );
+//                $( "#draw-target" ).css( "top", now );
+//            }
+//        });
                 //$('#draw-target').animate({ left: left });
                 //$('html, body').animate({ scrollLeft: left });
 
-
+                var childContainer = [];
                 $(children[0]).children().each(function (index, item) {
                     var sprite = makeChildItemFromParent(item);
+                    childContainer.push(sprite);
                 });
+                $.data($element, "childItem", childContainer);
+                $.data($element, "childVisible", true);
             });
         }
         return that;
@@ -171,7 +229,7 @@
 <script>
 
     //$('html, body').scrollTop(500);
-    $('html, body').animate({ scrollTop: 1000 });
+    //$('html, body').animate({ scrollTop: 1000 });
     //$('#draw-target').animate({ left: 100 });
 //
 //    $( "#go" ).click(function(){

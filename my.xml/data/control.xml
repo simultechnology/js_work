@@ -3,61 +3,93 @@
 
     <BaseItem>
         <image>images/base_drill.jpg</image>
-        <x>500</x>
-        <y>300</y>
+        <x>470</x>
+        <y>250</y>
     </BaseItem>
 
     <item>
         <itemName>モルタル</itemName>
         <image>images/mortar.jpg</image>
-        <x>400</x>
-        <y>450</y>
+        <x>370</x>
+        <y>400</y>
     </item>
 
     <item>
         <itemName>コンクリート</itemName>
         <image>images/concrete.jpg</image>
-        <x>650</x>
-        <y>450</y>
+        <x>620</x>
+        <y>400</y>
     </item>
 
     <item>
         <itemName>金属</itemName>
         <image>images/metal.jpg</image>
-        <x>700</x>
-        <y>250</y>
+        <x>670</x>
+        <y>200</y>
         <children>
             <item>
                 <itemName>締め付ける</itemName>
                 <image>images/wrench.jpg</image>
-                <x>850</x>
-                <y>100</y>
+                <x>820</x>
+                <y>50</y>
                 <children>
                     <item>
                         <itemName>ビス</itemName>
                         <image>images/bis.jpg</image>
-                        <x>1000</x>
-                        <y>50</y>
+                        <x>970</x>
+                        <y>-100</y>
+                        <children>
+                            <item>
+                                <itemName>力こぶビット</itemName>
+                                <image>images/bit.png</image>
+                                <x>1120</x>
+                                <y>-250</y>
+                            </item>
+                        </children>
                     </item>
                     <item>
                         <itemName>ボルト</itemName>
                         <image>images/bolt.jpg</image>
-                        <x>1000</x>
-                        <y>200</y>
+                        <x>970</x>
+                        <y>50</y>
+                        <children>
+                            <item>
+                                <itemName>ちょい曲げソケット</itemName>
+                                <image>images/socket.png</image>
+                                <x>1120</x>
+                                <y>50</y>
+                            </item>
+                        </children>
                     </item>
                 </children>
             </item>
             <item>
                 <itemName>穴あけ</itemName>
                 <image>images/driver.jpg</image>
-                <x>850</x>
-                <y>250</y>
+                <x>820</x>
+                <y>200</y>
+                <children>
+                    <item>
+                        <itemName>インパクト用ハイス\nホールソー</itemName>
+                        <image>images/holso.png</image>
+                        <x>970</x>
+                        <y>200</y>
+                    </item>
+                </children>
             </item>
             <item>
                 <itemName>タップ切り</itemName>
                 <image>images/tap.jpg</image>
-                <x>850</x>
-                <y>400</y>
+                <x>820</x>
+                <y>350</y>
+                <children>
+                    <item>
+                        <itemName>タップ・下穴ドリルセット</itemName>
+                        <image>images/drill_set.png</image>
+                        <x>970</x>
+                        <y>350</y>
+                    </item>
+                </children>
             </item>
         </children>
     </item>
@@ -65,20 +97,20 @@
     <item>
         <itemName>木材</itemName>
         <image>images/wood.jpg</image>
-        <x>520</x>
-        <y>150</y>
+        <x>490</x>
+        <y>100</y>
         <children>
             <item>
                 <itemName>ビス</itemName>
                 <image>images/bis.jpg</image>
-                <x>400</x>
-                <y>50</y>
+                <x>370</x>
+                <y>0</y>
             </item>
             <item>
                 <itemName>ボルト</itemName>
                 <image>images/bolt.jpg</image>
-                <x>620</x>
-                <y>50</y>
+                <x>590</x>
+                <y>0</y>
             </item>
         </children>
     </item>
@@ -86,7 +118,7 @@
     <item>
         <itemName>タイル</itemName>
         <image>images/tile.jpg</image>
-        <x>350</x>
-        <y>250</y>
+        <x>320</x>
+        <y>200</y>
     </item>
 </root>
