@@ -24,6 +24,7 @@
                         <image>images/mortar_drill.png</image>
                         <x>190</x>
                         <y>700</y>
+                        <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                     </item>
                 </children>
             </item>
@@ -47,6 +48,7 @@
                         <image>images/dd_core.png</image>
                         <x>800</x>
                         <y>700</y>
+                        <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                     </item>
                 </children>
             </item>
@@ -76,6 +78,7 @@
                                 <image>images/bit.png</image>
                                 <x>1120</x>
                                 <y>-250</y>
+                                <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                             </item>
                         </children>
                     </item>
@@ -90,6 +93,7 @@
                                 <image>images/socket.png</image>
                                 <x>1120</x>
                                 <y>50</y>
+                                <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                             </item>
                         </children>
                     </item>
@@ -106,6 +110,7 @@
                         <image>images/holso.png</image>
                         <x>970</x>
                         <y>200</y>
+                        <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                     </item>
                 </children>
             </item>
@@ -120,6 +125,7 @@
                         <image>images/drill_set.png</image>
                         <x>970</x>
                         <y>350</y>
+                        <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                     </item>
                 </children>
             </item>
@@ -143,6 +149,7 @@
                         <image>images/bit.png</image>
                         <x>370</x>
                         <y>-200</y>
+                        <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                     </item>
                 </children>
             </item>
@@ -157,6 +164,7 @@
                         <image>images/socket.png</image>
                         <x>590</x>
                         <y>-200</y>
+                        <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                     </item>
                 </children>
             </item>
@@ -180,12 +188,14 @@
                         <image>images/diamond_drill_bit_circle.png</image>
                         <x>20</x>
                         <y>70</y>
+                        <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                     </item>
                     <item>
                         <itemName>溶着ダイアモンドドリルビット(六画軸タイプ)</itemName>
                         <image>images/diamond_drill_bit.png</image>
                         <x>20</x>
                         <y>230</y>
+                        <url>http://www.hitachi-koki.co.jp/powertools/accessory/ddcore/ddcore.html</url>
                     </item>
                 </children>
             </item>

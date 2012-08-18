@@ -12,11 +12,10 @@
 <style type="text/css">
     div#canv-target {
         position: absolute;
-        left: -1000px;
-        top: -1000px;
-        width: 3000px;
-        height: 3000px;
-
+        left: -2000px;
+        top: -2000px;
+        width: 5000px;
+        height: 5000px;
     }
 
     div#overall-container {
@@ -78,7 +77,7 @@
             });
         }
 
-        var itemName = params.itemName.replace('\n', '<br>')
+        var itemName = params.itemName.replace('\n', '<br>'); // TODO 改行処理
         var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + itemName + '</div>'),
             elemStyle = $element[0].style;
 
@@ -89,6 +88,8 @@
             position:'absolute'
         });
 
+        var lineContainer = [];
+
         var that = {
             draw:function (x, y) {
                 elemStyle.left = x + 'px';
@@ -96,9 +97,23 @@
             },
             show:function () {
                 elemStyle.display = 'block';
+                if (lineContainer.length) {
+                    $(lineContainer).each(function(index, line) {
+                        $(line).css({
+                            "display" : "block"
+                        })
+                    });
+                }
             },
             hide:function () {
                 elemStyle.display = 'none';
+                if (lineContainer.length) {
+                    $(lineContainer).each(function(index, line) {
+                        $(line).css({
+                            "display" : "none"
+                        })
+                    });
+                }
             },
             destroy:function () {
                 $element.remove();
@@ -114,15 +129,18 @@
                 destX = destX.replace("px", "");
                 var destY = elemStyle.top;
                 destY = destY.replace("px", "");
-                console.log("org");
-                console.log(origX);
-                console.log(origY);
-                console.log("dest");
-                console.log(destX);
-                console.log(destY);
-                svg.line(origX + 1000, origY + 1000, Number(destX) + 1000, Number(destY) + 1000, {stroke: '#999999', strokeWidth: 1});
+                var line = drawSVGLine(origX, origY, destX, destY);
+                lineContainer.push(line);
             }
         };
+
+        var url = params.url;
+        if (url) {
+            $element.click(function() {
+                window.open(url);
+                return false;
+            });
+        }
 
         var children = params.children || null;
         if (children && children.length) {
@@ -144,8 +162,6 @@
                 var childItem = $.data($element, "childItem");
                 var childVisible = $.data($element, "childVisible");
                 if (childItem) {
-                    console.log(childItem);
-                    console.log(childVisible);
                     if (childVisible) {
                         $(childItem).each(function(index, item) {
                             makeChildItemInvisible(item);
@@ -164,8 +180,6 @@
                 var childContainer = [];
                 $(children[0]).children().each(function (index, item) {
                     var sprite = makeChildItemFromParent(item);
-                    console.log(top);
-                    console.log(left);
                     sprite.drawLine(left, top);
                     childContainer.push(sprite);
                 });
@@ -213,14 +227,16 @@
         $(items).each(function (index, item) {
             var sprite = makeChildItemFromParent(item);
 
-            var beginX = Number(centerPoint.left) + 50;
-            var beginY = Number(centerPoint.top) + 70;
+//            var beginX = Number(centerPoint.left) + 50;
+//            var beginY = Number(centerPoint.top) + 70;
+            var beginX = Number(centerPoint.left) + 20;
+            var beginY = Number(centerPoint.top) + 40;
             var elemStyle = sprite.getElemStyle();
             var destX = elemStyle.left;
             destX = destX.replace("px", "");
             var destY = elemStyle.top;
             destY = destY.replace("px", "");
-            svg.line(beginX + 1000, beginY + 1000, Number(destX) + 1000, Number(destY) + 1000, {stroke: '#999999', strokeWidth: 1});
+            drawSVGLine(beginX, beginY, destX, destY);
         });
     };
 
@@ -229,14 +245,24 @@
         var image = $(item).find('image')[0].textContent;
         var x = $(item).find('x')[0].textContent;
         var y = $(item).find('y')[0].textContent;
+        var url = $(item).find('url');
+        var ite = $(item).find('item');
+        if (!ite.length && url.length) {
+            url = $(item).find('url')[0].textContent;
+            console.log(url);
+        }
+        else {
+            url = null;
+        }
 
         var children = $(item).find('children');
         var params = {
-            itemName:itemName,
-            image:image,
-            x:x,
-            y:y,
-            children:children,
+            itemName: itemName,
+            image: image,
+            x: x,
+            y: y,
+            children: children,
+            url: url,
             $drawTarget:$('#draw-target')
         }
         return DHTMLSprite(params);
@@ -251,4 +277,17 @@
         });
         return exist;
     };
+
+    var drawSVGLine = function(beginX, beginY, endX, endY) {
+
+        var margin = 2000;
+
+        beginX = Number(beginX) + margin + 30;
+        beginY = Number(beginY) + margin + 30;
+        endX = Number(endX) + margin + 30;
+        endY = Number(endY) + margin + 30;
+
+        var line = svg.line(beginX, beginY, endX, endY, {stroke: '#999999', strokeWidth: 0.3});
+        return line;
+    }
 </script>
