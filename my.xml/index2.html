@@ -8,7 +8,6 @@
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <!--<script type="text/javascript" src="js/jquery-1.8.0.js"></script>-->
 <script type="text/javascript" src="js/jquery.svg.js"></script>
-<script type="text/javascript" src="js/jquery.svganim.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <style type="text/css">
     div#canv-target {
@@ -46,11 +45,6 @@
         background: #222;
         /* padding: 5px 10px; */
     }
-
-    img {
-        opacity: 0.5;
-    }
-
 </style>
 <body>
 <div id="overall-container">
@@ -104,15 +98,14 @@
         }
 
         var itemName = params.itemName.replace('\n', '<br>'); // TODO 改行処理
-        var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + itemName + '</div>');
-        var elemStyle = $element[0].style;
+        var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + itemName + '</div>'),
+            elemStyle = $element[0].style;
 
         elemStyle.left = params.x + 'px';
         elemStyle.top = params.y + 'px';
 
         $element.css({
-            position:'absolute',
-            visibility: !itemName ? 'visible' : 'hidden'
+            position:'absolute'
         });
 
         var lineContainer = [];
@@ -128,7 +121,7 @@
                     $(lineContainer).each(function(index, line) {
                         $(line).css({
                             "display" : "block"
-                        });
+                        })
                     });
                 }
             },
@@ -138,7 +131,7 @@
                     $(lineContainer).each(function(index, line) {
                         $(line).css({
                             "display" : "none"
-                        });
+                        })
                     });
                 }
             },
@@ -158,30 +151,8 @@
                 destY = destY.replace("px", "");
                 var line = drawSVGLine(origX, origY, destX, destY);
                 lineContainer.push(line);
-            },
-            makeItemVisible:function() {
-                $element.css({
-                    visibility: 'visible'
-                });
             }
         };
-
-        if (itemName) {
-            //simple_tooltip($element,"tooltip");
-            $($element).hover(function() {
-                        var img = $(this).find('img');
-                        $(img).css({
-                            opacity:1
-                            //filter: alpha(opacity=80)
-                        });
-                    },
-                    function() {
-                        var img = $(this).find('img');
-                        $(img).css({
-                            opacity:0.5
-                        });
-                    });
-        }
 
         var url = params.url;
         if (url) {
@@ -229,11 +200,6 @@
                 var childContainer = [];
                 $(children[0]).children().each(function (index, item) {
                     var sprite = makeChildItemFromParent(item);
-
-                    setTimeout(function() {
-                        sprite.makeItemVisible();
-                    }, 1000);
-
                     sprite.drawLine(left, top);
                     childContainer.push(sprite);
                 });
@@ -242,6 +208,9 @@
             });
         }
 
+        if (itemName) {
+            simple_tooltip($element,"tooltip");
+        }
         return that;
     };
 
@@ -265,27 +234,22 @@
     var parseXml = function (xml) {
         // ルートItemの表示処理
         var baseItem = $(xml).find('root > BaseItem');
-        var x = $(baseItem).find('x:nth(0)').text();
-        var y = $(baseItem).find('y:nth(0)').text();
-
         var baseSprite = DHTMLSprite({
             itemName:"",
-            image:$(baseItem).find('image:nth(0)').text(),
-            x:x,
-            y:y,
+            image:$(baseItem).find('image')[0].textContent,
             $drawTarget:$('#draw-target')
         });
+        var x = $(baseItem).find('x')[0].textContent;
+        var y = $(baseItem).find('y')[0].textContent;
+
+        baseSprite.draw(x, y);
+
         centerPoint = {top: y, left: x};
 
         // ルートItem周りのItem表示処理
         var items = $(xml).find('root > item');
         $(items).each(function (index, item) {
             var sprite = makeChildItemFromParent(item);
-
-//            var sprite;
-            setTimeout(function() {
-                sprite.makeItemVisible();
-            }, 1000);
 
 //            var beginX = Number(centerPoint.left) + 50;
 //            var beginY = Number(centerPoint.top) + 70;
@@ -301,14 +265,15 @@
     };
 
     var makeChildItemFromParent = function(item) {
-        var itemName = $(item).find('itemName:nth(0)').text();
-        var image = $(item).find('image:nth(0)').text();
-        var x = $(item).find('x:nth(0)').text();
-        var y = $(item).find('y:nth(0)').text();
+        var itemName = $(item).find('itemName')[0].textContent;
+        var image = $(item).find('image')[0].textContent;
+        var x = $(item).find('x')[0].textContent;
+        var y = $(item).find('y')[0].textContent;
         var url = $(item).find('url');
         var ite = $(item).find('item');
         if (!ite.length && url.length) {
-            url = $(item).find('url:nth(0)').text();
+            url = $(item).find('url')[0].textContent;
+            console.log(url);
         }
         else {
             url = null;
@@ -346,11 +311,7 @@
         endX = Number(endX) + margin + 30;
         endY = Number(endY) + margin + 30;
 
-        //var line = svg.line(beginX, beginY, endX, endY, {stroke: '#999999', strokeWidth: 0.3});
-        var line = svg.line(beginX, beginY, beginX, beginY, {stroke: '#999999', strokeWidth: 0.3});
-        var params = {svgX2: endX, svgY2: endY};
-        $(line).animate(params, 1000);
-
+        var line = svg.line(beginX, beginY, endX, endY, {stroke: '#999999', strokeWidth: 0.3});
         return line;
     }
 
