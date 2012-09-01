@@ -20,17 +20,17 @@
     }
 
     div#overall-container {
-        border:1px solid #777777;
-        width:1000px;
-        height:600px;
-        top:0px;
-        left:0px;
-        position:absolute;
+        border: 1px solid #777777;
+        width: 1000px;
+        height: 600px;
+        top: 0px;
+        left: 0px;
+        position: absolute;
         z-index: 400;
         background-color: #333;
     }
 
-    div.tooltip	{
+    div.tooltip {
         width: 70px;
         position: absolute;
         left: -9999px;
@@ -41,7 +41,7 @@
         z-index: 700
     }
 
-    div.tooltip p{
+    div.tooltip p {
         color: #FFF;
         background: #222;
         /* padding: 5px 10px; */
@@ -67,329 +67,329 @@
 </html>
 <script type="text/javascript">
 
-    var positonContena = [];
+var positonContena = [];
 
-    var centerPoint = {
-        top: 0,
-        left: 0
-    };
+var centerPoint = {
+    top:0,
+    left:0
+};
 
-    $("#canv-target").svg();
-    var svg = $('#canv-target').svg('get');
+$("#canv-target").svg();
+var svg = $('#canv-target').svg('get');
 
-    $(document).ready(function () {
+$(document).ready(function () {
 
-        $.ajax({
-            type:'GET',
-            url:'data/control.xml',
-            dataType:'xml',
-            success:function (xml) {
-                parseXml(xml);
-            }
-        });
-
-        //simple_tooltip("div","tooltip");
+    $.ajax({
+        type:'GET',
+        url:'data/control.xml',
+        dataType:'xml',
+        success:function (xml) {
+            parseXml(xml);
+        }
     });
 
-    var DHTMLSprite = function (params) {
-        // itemが既に存在しているかどうかチェックする
-        if (checkItemExist(positonContena, params.x, params.y)) {
-            return null;
-        }
-        if (!positonContena.length) {
-            positonContena.push({
-                x:params.x,
-                y:params.y
-            });
-        }
+    //simple_tooltip("div","tooltip");
+});
 
-        var itemName = params.itemName.replace('\n', '<br>'); // TODO 改行処理
-        var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + itemName + '</div>');
-        var elemStyle = $element[0].style;
-
-        elemStyle.left = params.x + 'px';
-        elemStyle.top = params.y + 'px';
-
-        $element.css({
-            position:'absolute',
-            visibility: !itemName ? 'visible' : 'hidden'
+var DHTMLSprite = function (params) {
+    // itemが既に存在しているかどうかチェックする
+    if (checkItemExist(positonContena, params.x, params.y)) {
+        return null;
+    }
+    if (!positonContena.length) {
+        positonContena.push({
+            x:params.x,
+            y:params.y
         });
+    }
 
-        var lineContainer = [];
+    var itemName = params.itemName.replace('\n', '<br>'); // TODO 改行処理
+    var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + itemName + '</div>');
+    var elemStyle = $element[0].style;
 
-        var that = {
-            draw:function (x, y) {
-                elemStyle.left = x + 'px';
-                elemStyle.top = y + 'px';
-            },
-            show:function () {
-                elemStyle.display = 'block';
-                if (lineContainer.length) {
-                    $(lineContainer).each(function(index, line) {
-                        $(line).css({
-                            "display" : "block"
-                        });
+    elemStyle.left = params.x + 'px';
+    elemStyle.top = params.y + 'px';
+
+    $element.css({
+        position:'absolute',
+        visibility:!itemName ? 'visible' : 'hidden'
+    });
+
+    var lineContainer = [];
+
+    var that = {
+        draw:function (x, y) {
+            elemStyle.left = x + 'px';
+            elemStyle.top = y + 'px';
+        },
+        show:function () {
+            elemStyle.display = 'block';
+            if (lineContainer.length) {
+                $(lineContainer).each(function (index, line) {
+                    $(line).css({
+                        "display":"block"
                     });
-                }
-            },
-            hide:function () {
-                elemStyle.display = 'none';
-                if (lineContainer.length) {
-                    $(lineContainer).each(function(index, line) {
-                        $(line).css({
-                            "display" : "none"
-                        });
-                    });
-                }
-            },
-            destroy:function () {
-                $element.remove();
-            },
-            getElement:function() {
-                return $element;
-            },
-            getElemStyle:function() {
-                return elemStyle;
-            },
-            drawLine:function(origX, origY) {
-                var destX = elemStyle.left;
-                destX = destX.replace("px", "");
-                var destY = elemStyle.top;
-                destY = destY.replace("px", "");
-                var line = drawSVGLine(origX, origY, destX, destY);
-                lineContainer.push(line);
-            },
-            makeItemVisible:function() {
-                $element.css({
-                    visibility: 'visible'
                 });
             }
-        };
-
-        if (itemName) {
-            //simple_tooltip($element,"tooltip");
-            $($element).hover(function() {
-                        var img = $(this).find('img');
-                        $(img).css({
-                            opacity:1
-                            //filter: alpha(opacity=80)
-                        });
-                    },
-                    function() {
-                        var img = $(this).find('img');
-                        $(img).css({
-                            opacity:0.5
-                        });
-                    });
-        }
-
-        var url = params.url;
-        if (url) {
-            $element.click(function() {
-                window.open(url);
-                return false;
-            });
-        }
-
-        var children = params.children || null;
-        if (children && children.length) {
-            $element.click(function () {
-                var top = elemStyle.top;
-                top = Number(top.replace("px", ""));
-                var left = elemStyle.left;
-                left = Number(left.replace("px", ""));
-                var moveDistance = {
-                    top: top - centerPoint.top,
-                    left: left - centerPoint.left
-                };
-                $("#left-top-point").animate({
-                    left: -moveDistance.left,
-                    top: -moveDistance.top
-
+        },
+        hide:function () {
+            elemStyle.display = 'none';
+            if (lineContainer.length) {
+                $(lineContainer).each(function (index, line) {
+                    //$(line).css({
+                    //    "display" : "none"
+                    //});
+                    $(line).remove();
                 });
-
-                var childItem = $.data($element, "childItem");
-                var childVisible = $.data($element, "childVisible");
-                if (childItem) {
-                    if (childVisible) {
-                        $(childItem).each(function(index, item) {
-                            makeChildItemInvisible(item);
-                        });
-                        $.data($element, "childVisible", false);
-                    }
-                    else {
-                        $(childItem).each(function(index, item) {
-                            item.show();
-                        });
-                        $.data($element, "childVisible", true);
-                    }
-                    return;
-                }
-
-                var childContainer = [];
-                $(children[0]).children().each(function (index, item) {
-                    var sprite = makeChildItemFromParent(item);
-
-                    setTimeout(function() {
-                        sprite.makeItemVisible();
-                    }, 1000);
-
-                    sprite.drawLine(left, top);
-                    childContainer.push(sprite);
-                });
-                $.data($element, "childItem", childContainer);
-                $.data($element, "childVisible", true);
-            });
-        }
-
-        return that;
-    };
-
-    var makeChildItemInvisible = function(item) {
-        // item内のelementを取得
-        var cElem = item.getElement();
-        var cItem = $.data(cElem, "childItem");
-        var cVisible = $.data(cElem, "childVisible");
-        if (cVisible) {
-            if (cItem) {
-                $(cItem).each(function(idx, itm) {
-                    makeChildItemInvisible(itm);
-                    itm.hide();
-                });
+                lineContainer = [];
             }
-            $.data(cElem, "childVisible", false);
-        }
-        item.hide();
-    };
-
-    var parseXml = function (xml) {
-        // ルートItemの表示処理
-        var baseItem = $(xml).find('root > BaseItem');
-        var x = $(baseItem).find('x:nth(0)').text();
-        var y = $(baseItem).find('y:nth(0)').text();
-
-        var baseSprite = DHTMLSprite({
-            itemName:"",
-            image:$(baseItem).find('image:nth(0)').text(),
-            x:x,
-            y:y,
-            $drawTarget:$('#draw-target')
-        });
-        centerPoint = {top: y, left: x};
-
-        // ルートItem周りのItem表示処理
-        var items = $(xml).find('root > item');
-        $(items).each(function (index, item) {
-            var sprite = makeChildItemFromParent(item);
-
-//            var sprite;
-            setTimeout(function() {
-                sprite.makeItemVisible();
-            }, 1000);
-
-//            var beginX = Number(centerPoint.left) + 50;
-//            var beginY = Number(centerPoint.top) + 70;
-            var beginX = Number(centerPoint.left) + 20;
-            var beginY = Number(centerPoint.top) + 40;
-            var elemStyle = sprite.getElemStyle();
+        },
+        destroy:function () {
+            $element.remove();
+        },
+        getElement:function () {
+            return $element;
+        },
+        getElemStyle:function () {
+            return elemStyle;
+        },
+        drawLine:function (origX, origY) {
             var destX = elemStyle.left;
             destX = destX.replace("px", "");
             var destY = elemStyle.top;
             destY = destY.replace("px", "");
-            drawSVGLine(beginX, beginY, destX, destY);
-        });
+            var line = drawSVGLine(origX, origY, destX, destY);
+            lineContainer.push(line);
+        },
+        makeItemVisible:function () {
+            $element.css({
+                visibility:'visible'
+            });
+        }
     };
 
-    var makeChildItemFromParent = function(item) {
-        var itemName = $(item).find('itemName:nth(0)').text();
-        var image = $(item).find('image:nth(0)').text();
-        var x = $(item).find('x:nth(0)').text();
-        var y = $(item).find('y:nth(0)').text();
-        var url = $(item).find('url');
-        var ite = $(item).find('item');
-        if (!ite.length && url.length) {
-            url = $(item).find('url:nth(0)').text();
-        }
-        else {
-            url = null;
-        }
-
-        var children = $(item).find('children');
-        var params = {
-            itemName: itemName,
-            image: image,
-            x: x,
-            y: y,
-            children: children,
-            url: url,
-            $drawTarget:$('#draw-target')
-        }
-        return DHTMLSprite(params);
-    };
-
-    var checkItemExist = function (array, x, y) {
-        var exist = false;
-        $(array).each(function (index, data) {
-            if (x == data.x && y == data.y) {
-                exist = true;
-            }
-        });
-        return exist;
-    };
-
-    var drawSVGLine = function(beginX, beginY, endX, endY) {
-
-        var margin = 2000;
-
-        beginX = Number(beginX) + margin + 30;
-        beginY = Number(beginY) + margin + 30;
-        endX = Number(endX) + margin + 30;
-        endY = Number(endY) + margin + 30;
-
-        //var line = svg.line(beginX, beginY, endX, endY, {stroke: '#999999', strokeWidth: 0.3});
-        var line = svg.line(beginX, beginY, beginX, beginY, {stroke: '#999999', strokeWidth: 0.3});
-        var params = {svgX2: endX, svgY2: endY};
-        $(line).animate(params, 1000);
-
-        return line;
+    if (itemName) {
+        $($element).hover(function () {
+                    var img = $(this).find('img');
+                    $(img).css({
+                        opacity:1
+                    });
+                },
+                function () {
+                    var img = $(this).find('img');
+                    $(img).css({
+                        opacity:0.5
+                    });
+                });
     }
 
-    var simple_tooltip = function(target_items, name){
-        $(target_items).each(function(i){
-            $("body").append("<div class='"+name+"' id='"+name+i+"'>click!</div>");
-            var my_tooltip = $("#"+name+i);
+    var url = params.url;
+    if (url) {
+        $element.click(function () {
+            window.open(url);
+            return false;
+        });
+    }
 
-            if($(this).attr("title") != "" && $(this).attr("title") != "undefined" ){
+    var children = params.children || null;
+    if (children && children.length) {
+        $element.click(function () {
+            var top = elemStyle.top;
+            top = Number(top.replace("px", ""));
+            var left = elemStyle.left;
+            left = Number(left.replace("px", ""));
+            var moveDistance = {
+                top:top - centerPoint.top,
+                left:left - centerPoint.left
+            };
+            $("#left-top-point").animate({
+                left:-moveDistance.left,
+                top:-moveDistance.top
 
-                $(this).removeAttr("title").mouseover(function(){
-                    my_tooltip.css({opacity:0.8, display:"none"}).fadeIn(400);
-                }).mousemove(function(kmouse){
-                            var border_top = $(window).scrollTop();
-                            var border_right = $(window).width();
-                            var left_pos;
-                            var top_pos;
-                            var offset = 20;
-                            if(border_right - (offset *2) >= my_tooltip.width() + kmouse.pageX){
-                                left_pos = kmouse.pageX+offset;
-                            } else{
-                                left_pos = border_right-my_tooltip.width()-offset;
-                            }
+            });
 
-                            if(border_top + (offset *2)>= kmouse.pageY - my_tooltip.height()){
-                                top_pos = border_top +offset;
-                            } else{
-                                top_pos = kmouse.pageY-my_tooltip.height()-offset;
-                            }
+            var childItem = $.data($element, "childItem");
+            var childVisible = $.data($element, "childVisible");
+            if (childItem) {
+                if (childVisible) {
+                    $(childItem).each(function (index, item) {
+                        makeChildItemInvisible(item);
+                        item.destroy();
+                    });
+                    $.data($element, "childItem", null);
+                    $.data($element, "childVisible", false);
+                }
+                else {
+                    $(childItem).each(function (index, item) {
+                        item.show();
+                    });
+                    $.data($element, "childVisible", true);
+                }
+                return;
+            }
 
+            var childContainer = [];
+            $(children[0]).children().each(function (index, item) {
+                var sprite = makeChildItemFromParent(item);
 
-                            my_tooltip.css({left:left_pos, top:top_pos});
-                        }).mouseout(function(){
-                            my_tooltip.css({
-                                left:"-9999px"
-                            });
+                setTimeout(function () {
+                    sprite.makeItemVisible();
+                }, 1000);
+
+                sprite.drawLine(left, top);
+                childContainer.push(sprite);
+            });
+            $.data($element, "childItem", childContainer);
+            $.data($element, "childVisible", true);
+        });
+    }
+
+    return that;
+};
+
+var makeChildItemInvisible = function (item) {
+    // item内のelementを取得
+    var cElem = item.getElement();
+    var cItem = $.data(cElem, "childItem");
+    var cVisible = $.data(cElem, "childVisible");
+    if (cVisible) {
+        if (cItem) {
+            $(cItem).each(function (idx, itm) {
+                makeChildItemInvisible(itm);
+                itm.hide();
+            });
+        }
+        $.data(cElem, "childVisible", false);
+    }
+    item.hide();
+};
+
+var parseXml = function (xml) {
+    // ルートItemの表示処理
+    var baseItem = $(xml).find('root > BaseItem');
+    var x = $(baseItem).find('x:nth(0)').text();
+    var y = $(baseItem).find('y:nth(0)').text();
+
+    var baseSprite = DHTMLSprite({
+        itemName:"",
+        image:$(baseItem).find('image:nth(0)').text(),
+        x:x,
+        y:y,
+        $drawTarget:$('#draw-target')
+    });
+    centerPoint = {top:y, left:x};
+
+    // ルートItem周りのItem表示処理
+    var items = $(xml).find('root > item');
+    $(items).each(function (index, item) {
+        var sprite = makeChildItemFromParent(item);
+
+        setTimeout(function () {
+            sprite.makeItemVisible();
+        }, 1000);
+
+//            var beginX = Number(centerPoint.left) + 50;
+//            var beginY = Number(centerPoint.top) + 70;
+        var beginX = Number(centerPoint.left) + 20;
+        var beginY = Number(centerPoint.top) + 40;
+        var elemStyle = sprite.getElemStyle();
+        var destX = elemStyle.left;
+        destX = destX.replace("px", "");
+        var destY = elemStyle.top;
+        destY = destY.replace("px", "");
+        drawSVGLine(beginX, beginY, destX, destY);
+    });
+};
+
+var makeChildItemFromParent = function (item) {
+    var itemName = $(item).find('itemName:nth(0)').text();
+    var image = $(item).find('image:nth(0)').text();
+    var x = $(item).find('x:nth(0)').text();
+    var y = $(item).find('y:nth(0)').text();
+    var url = $(item).find('url');
+    var ite = $(item).find('item');
+    if (!ite.length && url.length) {
+        url = $(item).find('url:nth(0)').text();
+    }
+    else {
+        url = null;
+    }
+
+    var children = $(item).find('children');
+    var params = {
+        itemName:itemName,
+        image:image,
+        x:x,
+        y:y,
+        children:children,
+        url:url,
+        $drawTarget:$('#draw-target')
+    }
+    return DHTMLSprite(params);
+};
+
+var checkItemExist = function (array, x, y) {
+    var exist = false;
+    $(array).each(function (index, data) {
+        if (x == data.x && y == data.y) {
+            exist = true;
+        }
+    });
+    return exist;
+};
+
+var drawSVGLine = function (beginX, beginY, endX, endY) {
+
+    var margin = 2000;
+
+    beginX = Number(beginX) + margin + 30;
+    beginY = Number(beginY) + margin + 30;
+    endX = Number(endX) + margin + 30;
+    endY = Number(endY) + margin + 30;
+
+    //var line = svg.line(beginX, beginY, endX, endY, {stroke: '#999999', strokeWidth: 0.3});
+    var line = svg.line(beginX, beginY, beginX, beginY, {stroke:'#999999', strokeWidth:0.3});
+    var params = {svgX2:endX, svgY2:endY};
+    $(line).animate(params, 1000);
+
+    return line;
+}
+
+var simple_tooltip = function (target_items, name) {
+    $(target_items).each(function (i) {
+        $("body").append("<div class='" + name + "' id='" + name + i + "'>click!</div>");
+        var my_tooltip = $("#" + name + i);
+
+        if ($(this).attr("title") != "" && $(this).attr("title") != "undefined") {
+
+            $(this).removeAttr("title").mouseover(function () {
+                my_tooltip.css({opacity:0.8, display:"none"}).fadeIn(400);
+            }).mousemove(function (kmouse) {
+                        var border_top = $(window).scrollTop();
+                        var border_right = $(window).width();
+                        var left_pos;
+                        var top_pos;
+                        var offset = 20;
+                        if (border_right - (offset * 2) >= my_tooltip.width() + kmouse.pageX) {
+                            left_pos = kmouse.pageX + offset;
+                        } else {
+                            left_pos = border_right - my_tooltip.width() - offset;
+                        }
+
+                        if (border_top + (offset * 2) >= kmouse.pageY - my_tooltip.height()) {
+                            top_pos = border_top + offset;
+                        } else {
+                            top_pos = kmouse.pageY - my_tooltip.height() - offset;
+                        }
+
+                        my_tooltip.css({left:left_pos, top:top_pos});
+                    }).mouseout(function () {
+                        my_tooltip.css({
+                            left:"-9999px"
                         });
-            }
+                    });
+        }
 
-        });
-    }
+    });
+}
 </script>
