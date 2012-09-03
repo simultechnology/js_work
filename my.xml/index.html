@@ -7,8 +7,9 @@
 <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <!--<script type="text/javascript" src="js/jquery-1.8.0.js"></script>-->
-<script type="text/javascript" src="js/jquery.svg.js"></script>
-<script type="text/javascript" src="js/jquery.svganim.js"></script>
+<!--<script type="text/javascript" src="js/jquery.svg.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery.svganim.js"></script>-->
+<script type="text/javascript" src="js/raphael-min.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <style type="text/css">
     div#canv-target {
@@ -74,10 +75,11 @@ var centerPoint = {
     left:0
 };
 
-$("#canv-target").svg();
-var svg = $('#canv-target').svg('get');
+var rapheal;
 
 $(document).ready(function () {
+
+	rapheal = Raphael("canv-target", 5000, 5000);
 
     $.ajax({
         type:'GET',
@@ -104,7 +106,7 @@ var DHTMLSprite = function (params) {
     }
 
     var itemName = params.itemName.replace('\n', '<br>'); // TODO 改行処理
-    var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div>' + itemName + '</div>');
+    var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div style="min-width: 150px;">' + itemName + '</div>');
     var elemStyle = $element[0].style;
 
     elemStyle.left = params.x + 'px';
@@ -139,7 +141,7 @@ var DHTMLSprite = function (params) {
                     //$(line).css({
                     //    "display" : "none"
                     //});
-                    $(line).remove();
+                    line.remove();
                 });
                 lineContainer = [];
             }
@@ -168,16 +170,19 @@ var DHTMLSprite = function (params) {
         }
     };
 
+
+    var img = $element.find("img");
+
     if (itemName) {
-        $($element).hover(function () {
-                    var img = $(this).find('img');
-                    $(img).css({
+        img.css({opacity: 0.5});
+        //simple_tooltip(img,"tooltip");
+        $(img).hover(function () {
+                    $(this).css({
                         opacity:1
                     });
                 },
                 function () {
-                    var img = $(this).find('img');
-                    $(img).css({
+                    $(this).css({
                         opacity:0.5
                     });
                 });
@@ -193,7 +198,7 @@ var DHTMLSprite = function (params) {
 
     var children = params.children || null;
     if (children && children.length) {
-        $element.click(function () {
+        $(img).click(function () {
             var top = elemStyle.top;
             top = Number(top.replace("px", ""));
             var left = elemStyle.left;
@@ -347,11 +352,16 @@ var drawSVGLine = function (beginX, beginY, endX, endY) {
     endX = Number(endX) + margin + 30;
     endY = Number(endY) + margin + 30;
 
-    //var line = svg.line(beginX, beginY, endX, endY, {stroke: '#999999', strokeWidth: 0.3});
-    var line = svg.line(beginX, beginY, beginX, beginY, {stroke:'#999999', strokeWidth:0.3});
-    var params = {svgX2:endX, svgY2:endY};
-    $(line).animate(params, 1000);
+    //var line = rapheal.line(beginX, beginY, endX, endY, {stroke: '#999999', strokeWidth: 0.3});
+    var line = rapheal.path("M " + beginX + " " + beginY + " " + beginX +" " + beginY); //, {stroke:'#999999', strokeWidth:0.3});
 
+    line.attr({
+            'stroke' : '#FFFFFF',
+            'stroke-width' : 0.3
+        });
+
+    //var params = {svgX2:endX, svgY2:endY};
+    line.animate({path:"M " + beginX + " " + beginY + " " + endX + " " + endY}, 1000);
     return line;
 }
 
