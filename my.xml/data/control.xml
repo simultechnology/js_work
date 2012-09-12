@@ -11,13 +11,13 @@
 
     <item>
         <itemName>モルタル</itemName>
-        <image>images/mortar.jpg</image>
+        <image>images/mortar.png</image>
         <x>370</x>
         <y>400</y>
         <children>
             <item>
                 <itemName>穴あけ</itemName>
-                <image>images/driver.jpg</image>
+                <image>images/driver.png</image>
                 <x>290</x>
                 <y>550</y>
                 <children>
@@ -35,13 +35,13 @@
 
     <item>
         <itemName>コンクリート</itemName>
-        <image>images/concrete.jpg</image>
+        <image>images/concrete.png</image>
         <x>620</x>
         <y>400</y>
         <children>
             <item>
                 <itemName>穴あけ</itemName>
-                <image>images/driver.jpg</image>
+                <image>images/driver.png</image>
                 <x>700</x>
                 <y>550</y>
                 <children>
@@ -59,19 +59,19 @@
 
     <item>
         <itemName>金属</itemName>
-        <image>images/metal.jpg</image>
+        <image>images/metal.png</image>
         <x>670</x>
         <y>200</y>
         <children>
             <item>
                 <itemName>締め付ける</itemName>
-                <image>images/wrench.jpg</image>
+                <image>images/wrench.png</image>
                 <x>820</x>
                 <y>50</y>
                 <children>
                     <item>
                         <itemName>ビス</itemName>
-                        <image>images/bis.jpg</image>
+                        <image>images/bis.png</image>
                         <x>970</x>
                         <y>-100</y>
                         <children>
@@ -86,7 +86,7 @@
                     </item>
                     <item>
                         <itemName>ボルト</itemName>
-                        <image>images/bolt.jpg</image>
+                        <image>images/bolt.png</image>
                         <x>970</x>
                         <y>50</y>
                         <children>
@@ -103,7 +103,7 @@
             </item>
             <item>
                 <itemName>穴あけ</itemName>
-                <image>images/driver.jpg</image>
+                <image>images/driver.png</image>
                 <x>820</x>
                 <y>200</y>
                 <children>
@@ -118,7 +118,7 @@
             </item>
             <item>
                 <itemName>タップ切り</itemName>
-                <image>images/tap.jpg</image>
+                <image>images/tap.png</image>
                 <x>820</x>
                 <y>350</y>
                 <children>
@@ -136,13 +136,13 @@
 
     <item>
         <itemName>木材</itemName>
-        <image>images/wood.jpg</image>
+        <image>images/wood.png</image>
         <x>490</x>
         <y>100</y>
         <children>
             <item>
                 <itemName>ビス</itemName>
-                <image>images/bis.jpg</image>
+                <image>images/bis.png</image>
                 <x>370</x>
                 <y>0</y>
                 <children>
@@ -157,7 +157,7 @@
             </item>
             <item>
                 <itemName>ボルト</itemName>
-                <image>images/bolt.jpg</image>
+                <image>images/bolt.png</image>
                 <x>590</x>
                 <y>0</y>
                 <children>
@@ -175,13 +175,13 @@
 
     <item>
         <itemName>タイル</itemName>
-        <image>images/tile.jpg</image>
+        <image>images/tile.png</image>
         <x>320</x>
         <y>200</y>
         <children>
             <item>
                 <itemName>穴あけ</itemName>
-                <image>images/driver.jpg</image>
+                <image>images/driver.png</image>
                 <x>170</x>
                 <y>150</y>
                 <children>

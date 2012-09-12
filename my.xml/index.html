@@ -49,7 +49,7 @@
     }
 
     img {
-        opacity: 0.5;
+        /*opacity: 0.5;*/
     }
 
 </style>
@@ -176,17 +176,23 @@ var DHTMLSprite = function (params) {
     var img = $element.find("img");
 
     if (itemName) {
-        img.css({opacity: 0.5});
+//        img.css({opacity: 0.5});
         //simple_tooltip(img,"tooltip");
+        var oriImagePath;
         $(img).hover(function () {
-                    $(this).css({
-                        opacity:1
-                    });
+                    var imagePath = $(this).attr('src');
+                    oriImagePath = imagePath;
+                    var lastIndex = imagePath.lastIndexOf('/');
+                    var firstPart = imagePath.slice(0, lastIndex);
+                    var secondPart = 'b_' + imagePath.slice(lastIndex + 1);
+                    imagePath = firstPart + '/' + secondPart;
+                    $(img).attr('src', imagePath);
                 },
                 function () {
-                    $(this).css({
-                        opacity:0.5
-                    });
+                    $(img).attr('src', oriImagePath);
+//                    $(this).css({
+//                        opacity:0.5
+//                    });
                 });
     }
 
@@ -276,7 +282,6 @@ var parseXml = function (xml) {
     var bgColor = $(xml).find('root > BgColor').text();
     lineColor = $(xml).find('root > LineColor').text();
     var itemNameColor = $(xml).find('root > ItemNameColor').text();
-    console.log(bgColor);
     if (bgColor) {
         $('div#overall-container').css('background-color', bgColor);
     }
