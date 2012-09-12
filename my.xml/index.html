@@ -75,6 +75,8 @@ var centerPoint = {
     left:0
 };
 
+var lineColor;
+
 var rapheal;
 
 $(document).ready(function () {
@@ -270,6 +272,19 @@ var makeChildItemInvisible = function (item) {
 };
 
 var parseXml = function (xml) {
+
+    var bgColor = $(xml).find('root > BgColor').text();
+    lineColor = $(xml).find('root > LineColor').text();
+    var itemNameColor = $(xml).find('root > ItemNameColor').text();
+    console.log(bgColor);
+    if (bgColor) {
+        $('div#overall-container').css('background-color', bgColor);
+    }
+    if (itemNameColor) {
+        $('body').css('color', itemNameColor);
+    }
+
+
     // ルートItemの表示処理
     var baseItem = $(xml).find('root > BaseItem');
     var x = $(baseItem).find('x:nth(0)').text();
@@ -356,7 +371,7 @@ var drawSVGLine = function (beginX, beginY, endX, endY) {
     var line = rapheal.path("M " + beginX + " " + beginY + " " + beginX +" " + beginY); //, {stroke:'#999999', strokeWidth:0.3});
 
     line.attr({
-            'stroke' : '#FFFFFF',
+            'stroke' : lineColor,
             'stroke-width' : 0.3
         });
 
