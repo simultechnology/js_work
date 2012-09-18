@@ -225,13 +225,18 @@ var DHTMLSprite = function (params, parent) {
             var childItem = $.data($element, "childItem");
             var childVisible = $.data($element, "childVisible");
             if (childItem) {
+                $('path').each(function(idx, line) {
+                    var strokeWidth = $(line).attr('stroke-width');
+                    if (strokeWidth == 10) {
+                        $(line).remove();
+                    }
+                });
                 if (childVisible) {
                     $(childItem).each(function (index, item) {
                         makeChildItemInvisible(item);
                         item.destroy();
                     });
                     if (baseLineContainer.length) {
-                        console.log(baseLineContainer);
                         $(baseLineContainer).each(function(idx, line) {
                             line.hide();
                         });
@@ -257,41 +262,11 @@ var DHTMLSprite = function (params, parent) {
                     sprite.makeItemVisible();
                 }, 1000);
 
-                var parentDiv = parent.getElement();
-
+                drawLineChildToParent(parent);
+//                var parentDiv = parent.getElement();
+//
                 var parentLeft = Number(parent.getElemStyle().left.replace("px", ""));
                 var parentTop = Number(parent.getElemStyle().top.replace("px", ""));
-
-                var gParent = parent.getParent();
-                if (gParent) {
-                    console.log('gParent');
-                    console.log(gParent);
-                    var gParentLeft = Number(gParent.getElemStyle().left.replace("px", ""));
-                    var gParentTop = Number(gParent.getElemStyle().top.replace("px", ""));
-
-                    var temElem = gParent.getElement();
-                    if ($(temElem).find('img').attr('src') === 'images/base_drill.jpg' ) {
-                        gParentLeft += 20;
-                        gParentTop += 40;
-                        var baseline = drawSVGLine(parentLeft, parentTop, gParentLeft, gParentTop, 10);
-                        baseLineContainer.push(baseline);
-                    }
-                    else {
-
-
-                        setTimeout(function () {
-                            var line = drawSVGLine(parentLeft, parentTop, gParentLeft, gParentTop, 10);
-                            console.log(parentLeft);
-                            console.log(parentTop);
-                            console.log(gParentLeft);
-                            console.log(gParentTop);
-                            console.log(line);
-                            lineContainer.push(line);
-                        }, 1200);
-
-                    }
-                }
-
                 $('path').each(function(idx, line) {
                     var strokeWidth = $(line).attr('stroke-width');
                     if (strokeWidth == 10) {
@@ -328,6 +303,12 @@ var DHTMLSprite = function (params, parent) {
     var url = params.url;
     if (url) {
         $element.click(function () {
+            $('path').each(function(idx, line) {
+                var strokeWidth = $(line).attr('stroke-width');
+                if (strokeWidth == 10) {
+                    $(line).remove();
+                }
+            });
             var top = elemStyle.top;
             top = Number(top.replace("px", ""));
             var left = elemStyle.left;
@@ -336,6 +317,7 @@ var DHTMLSprite = function (params, parent) {
             var parentTop = Number(parent.getElemStyle().top.replace("px", ""));
             var line = drawSVGLine(left, top, parentLeft, parentTop, 10);
             lineContainer.push(line);
+            drawLineChildToParent(parent);
 
             window.open(url);
             return false;
@@ -344,6 +326,36 @@ var DHTMLSprite = function (params, parent) {
 
     return that;
 };
+
+var drawLineChildToParent = function (sprite) {
+    var parentDiv = sprite.getElement();
+
+    var left = Number(sprite.getElemStyle().left.replace("px", ""));
+    var top = Number(sprite.getElemStyle().top.replace("px", ""));
+
+    var parentSprite = sprite.getParent();
+    if (parentSprite) {
+        var parentLeft = Number(parentSprite.getElemStyle().left.replace("px", ""));
+        var parentTop = Number(parentSprite.getElemStyle().top.replace("px", ""));
+
+        var parentElem = parentSprite.getElement();
+        if ($(parentElem).find('img').attr('src') === 'images/base_drill.jpg' ) {
+            parentLeft += 20;
+            parentTop += 40;
+            setTimeout(function () {
+                var baseline = drawSVGLine(left, top, parentLeft, parentTop, 10);
+                //baseLineContainer.push(baseline);
+            }, 1000);
+        }
+        else {
+            setTimeout(function () {
+                var line = drawSVGLine(left, top, parentLeft, parentTop, 10);
+                drawLineChildToParent(parentSprite);
+            }, 1000);
+        }
+    }
+};
+
 
 var makeChildItemInvisible = function (item) {
     // item内のelementを取得
