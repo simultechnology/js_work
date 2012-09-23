@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="Shift-Jis" ?>
 <root>
-    <BgColor>#FFFFFF</BgColor>
-    <LineColor>#333333</LineColor>
-    <ItemNameColor>#000000</ItemNameColor>
+    <BgColor>#333333</BgColor>
+    <LineColor>#FFFFFF</LineColor>
+    <ItemNameColor>#FFFFFF</ItemNameColor>
     <BaseItem>
         <image>images/base_drill.jpg</image>
         <x>470</x>
