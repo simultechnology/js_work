@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.svg.js"></script>
+<script type="text/javascript">
+        /* http://keith-wood.name/svgRef.html */
+            $(document).ready(function() {
+                $("#wb").svg();
+                var svg = $('#wb').svg('get');
+
+                var rectOne = [20,20]
+                var rectTwo = [400,100]
+                var rectThree = [300,500]
+                svg.polygon([rectOne, rectTwo, rectThree], {stroke: '#FF2605', fill: 'none', strokeWidth: 1});
+
+                svg.rect(450, 50, 300, 200, {stroke: '#663028', fill: '#F3D70A', strokeWidth: 4});
+
+                svg.line(400, 400, 800, 300, {stroke: '#363F12', strokeWidth: 10});
+            });
+</script>
+<style type="text/css">
+    .canvas {
+        position: relative;
+    }
+</style>
+<body>
+    <div id="wb"></div>
+</body>
+</html>

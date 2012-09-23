@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1af01b92-b5a3-404f-8684-d279fb75f266" name="Default" comment="">
+    <list default="true" id="1af01b92-b5a3-404f-8684-d279fb75f266" name="Default" comment="xmlファイルを修正">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my.demo/images/metai.jpg" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_bus/map_010_files/17_3299_581.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_bus/map_010_files/17_3299_582.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_bus/map_010_files/17_3300_581.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_bus/map_010_files/17_3300_582.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_bus/map_010_files/17_3301_581.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_bus/map_010_files/17_3301_582.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/js_work.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my.demo/graphics/line_demo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my.demo/jquery-draw/draw.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my.demo/jquery-draw/jquery.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_bus/map_010.html" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_bus/map_010_files/loader.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_bus/test.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/index.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my.xml/index.html" afterPath="$PROJECT_DIR$/my.xml/index.html" />
     </list>
     <ignored path="js_work.iws" />
@@ -37,6 +35,7 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="js_work" />
   </component>
@@ -45,52 +44,48 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/my.xml/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="0" selection-start="1146" selection-end="1146" vertical-scroll-proportion="0.97556716">
+            <state line="96" column="1" selection-start="2458" selection-end="2458" vertical-scroll-proportion="0.58426964">
+              <folding>
+                <marker date="1348401999000" expanded="true" signature="3309:3326" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="control.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my.xml/data/control.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="195" column="4" selection-start="6814" selection-end="6814" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loader.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_bus/map_010_files/loader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="39" selection-end="191" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
+      <file leaf-file-name="tap.jpg" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my.xml/images/tap.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map_010.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_bus/map_010.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="38" selection-start="3189" selection-end="3189" vertical-scroll-proportion="-29.772728">
-              <folding />
-            </state>
+      <file leaf-file-name="metal.jpg" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my.xml/images/metal.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_bus/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="661" selection-end="661" vertical-scroll-proportion="-7.681818">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my.xml/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="26" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
+      <file leaf-file-name="wrench.jpg" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my.xml/images/wrench.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="animation_demo.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my.demo/animation_demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="8" selection-start="577" selection-end="577" vertical-scroll-proportion="-14.181818">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -99,32 +94,16 @@
       <file leaf-file-name="line_demo.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my.demo/line_demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="29" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="control.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my.xml/data/control.xml">
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my.xml/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="26" selection-start="2204" selection-end="2204" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="socket.jpg" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my.xml/images/socket.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery-1.8.0.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my.xml/js/jquery-1.8.0.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="0" selection-start="2389" selection-end="2389" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -143,15 +122,20 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/index.html" />
-        <option value="$PROJECT_DIR$/my.xml/js/jquery-1.8.0.js" />
-        <option value="$PROJECT_DIR$/my.demo/line_demo.html" />
-        <option value="$PROJECT_DIR$/my.demo/sprite_demo.html" />
-        <option value="$PROJECT_DIR$/my.demo/animation_demo.html" />
         <option value="$PROJECT_DIR$/my_bus/map_010_files/loader.js" />
         <option value="$PROJECT_DIR$/my_bus/map_010.html" />
         <option value="$PROJECT_DIR$/my_bus/test.html" />
         <option value="$PROJECT_DIR$/my.xml/css/style.css" />
+        <option value="$PROJECT_DIR$/my.demo/graphics/article_illustrations.html" />
+        <option value="$PROJECT_DIR$/my.demo/graphics/index.html" />
+        <option value="$PROJECT_DIR$/my.demo/graphics/line_demo.html" />
+        <option value="$PROJECT_DIR$/my.demo/graphics/my_test.html" />
+        <option value="$PROJECT_DIR$/my-line-demo/js/svg.js" />
+        <option value="$PROJECT_DIR$/my-line-demo/jQuery SVG.html" />
+        <option value="$PROJECT_DIR$/my.demo/graphics/svg_anim.html" />
+        <option value="$PROJECT_DIR$/my.demo/graphics/svgBasic.html" />
+        <option value="$PROJECT_DIR$/my.xml/js/raphael-min.js" />
+        <option value="$PROJECT_DIR$/test/index.html" />
         <option value="$PROJECT_DIR$/my.xml/data/control.xml" />
         <option value="$PROJECT_DIR$/my.xml/index.html" />
       </list>
@@ -159,10 +143,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="39" />
-    <option name="y" value="22" />
+    <option name="x" value="255" />
+    <option name="y" value="267" />
     <option name="width" value="1241" />
-    <option name="height" value="778" />
+    <option name="height" value="910" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -206,16 +190,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -244,7 +218,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="my_bus" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -280,22 +254,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js_work" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js_work" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="my.xml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -304,35 +270,41 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="225" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="227" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="181" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="181" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="225" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="191" />
     <property name="options.lastSelected" value="preferences.sourceCode.XML" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="230" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1008" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../titanium_work/app-hangman" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="184" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="606" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1008" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="230" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="227" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="575" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="194" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="192" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/my.xml/js" />
+      <recent name="$PROJECT_DIR$/my.demo/graphics" />
       <recent name="$PROJECT_DIR$/my.xml/images" />
+      <recent name="$PROJECT_DIR$/my.demo" />
       <recent name="$PROJECT_DIR$/my.xml" />
-      <recent name="$PROJECT_DIR$/my.demo/image" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/my.xml/js" />
+      <recent name="$PROJECT_DIR$/my.xml" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -395,28 +367,65 @@
       <created>1345100987340</created>
       <updated>1345100987340</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="子item再帰的に非表示にする関数追加">
+      <created>1345120051124</created>
+      <updated>1345120051124</updated>
+    </task>
+    <task id="LOCAL-00008" summary="アイテム間の線を引く処理を追加">
+      <created>1345141191784</created>
+      <updated>1345141191784</updated>
+    </task>
+    <task id="LOCAL-00009" summary="xmlファイルを修正">
+      <created>1345142109646</created>
+      <updated>1345142109646</updated>
+    </task>
+    <task id="LOCAL-00010" summary="線の非表示、xmlにurlが存在する場合は別ウィンドウへの遷移処理を追加">
+      <created>1345311657069</created>
+      <updated>1345311657069</updated>
+    </task>
+    <task id="LOCAL-00011" summary="アイテム表示の際、イージング処理を追加">
+      <created>1345399304443</created>
+      <updated>1345399304443</updated>
+    </task>
+    <task id="LOCAL-00012" summary="IE対応を途中まで実装">
+      <created>1345405116821</created>
+      <updated>1345405116821</updated>
+    </task>
+    <task id="LOCAL-00013" summary="raphael.jsを使用し、IE7,8でのSVG対応">
+      <created>1346694093314</created>
+      <updated>1346694093314</updated>
+    </task>
+    <task id="LOCAL-00014" summary="背景色、商品名をxmlで変更できるように修正">
+      <created>1347468654935</created>
+      <updated>1347468654935</updated>
+    </task>
+    <task id="LOCAL-00015" summary="太線を引く処理（実装中）">
+      <created>1347972520245</created>
+      <updated>1347972520245</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="39" y="22" width="1241" height="778" extended-state="6" />
+    <frame x="255" y="267" width="1241" height="910" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32953104" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18493724" sideWeight="0.9923897" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2" sideWeight="0.9923897" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.116317995" sideWeight="0.6704689" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22175732" sideWeight="0.6704689" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12916246" sideWeight="0.9965378" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34220532" sideWeight="0.9987886" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31795877" sideWeight="0.99435735" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -444,7 +453,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
@@ -454,12 +462,11 @@
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="子itemの非表示処理を追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="カーソルを手マークに変更&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -478,12 +485,90 @@
     <MESSAGE value="スタイルシートを追加" />
     <MESSAGE value="スクロール移動処理の追加" />
     <MESSAGE value="子itemの非表示処理を追加" />
+    <MESSAGE value="子item再帰的に非表示にする関数追加" />
+    <MESSAGE value="アイテム間の線を引く処理を追加" />
+    <MESSAGE value="xmlファイルを修正" />
+    <MESSAGE value="線の非表示、xmlにurlが存在する場合は別ウィンドウへの遷移処理を追加" />
+    <MESSAGE value="アイテム表示の際、イージング処理を追加" />
+    <MESSAGE value="IE対応を途中まで実装" />
+    <MESSAGE value="rapheal.jsを使用し、IE7,8でのSVG対応" />
+    <MESSAGE value="raphael.jsを使用し、IE7,8でのSVG対応" />
+    <MESSAGE value="背景色、商品名をxmlで変更できるように修正" />
+    <MESSAGE value="太線を引く処理（実装中）" />
+    <MESSAGE value="カーソルを手マークに変更&#10;" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/my.demo/graphics/svgBasic.html</url>
+          <line>56</line>
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/my.demo/images/sample.png">
+    <entry file="file://$PROJECT_DIR$/my.xml/js/svg2vml.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.xml/js/jquery.svg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1312" column="0" selection-start="52902" selection-end="52902" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.demo/graphics/svg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="614" column="24" selection-start="28895" selection-end="28895" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.xml/js/raphael.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.xml/js/raphael-min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="139" selection-start="756" selection-end="756" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.demo/sprite_demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="0" selection-start="1921" selection-end="1921" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.demo/line_demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.demo/animation_demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.xml/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.xml/data/control.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="195" column="4" selection-start="6814" selection-end="6814" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.xml/images/tap.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -493,87 +578,17 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my.xml/images/concrete.jpg">
+    <entry file="file://$PROJECT_DIR$/my.xml/images/wrench.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="6" selection-start="464" selection-end="464" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my.demo/sprite_demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my.demo/line_demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="29" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my.xml/js/jquery-1.8.0.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="2389" selection-end="2389" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my.demo/animation_demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="8" selection-start="577" selection-end="577" vertical-scroll-proportion="-14.181818">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_bus/map_010_files/loader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="39" selection-end="191" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_bus/map_010.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="38" selection-start="3189" selection-end="3189" vertical-scroll-proportion="-29.772728">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_bus/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="661" selection-end="661" vertical-scroll-proportion="-7.681818">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my.xml/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="26" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my.xml/images/socket.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my.xml/data/control.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="26" selection-start="2204" selection-end="2204" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my.xml/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1146" selection-end="1146" vertical-scroll-proportion="0.97556716">
-          <folding />
+        <state line="96" column="1" selection-start="2458" selection-end="2458" vertical-scroll-proportion="0.58426964">
+          <folding>
+            <marker date="1348401999000" expanded="true" signature="3309:3326" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -33,6 +33,11 @@
         z-index: 400;
         background-color: #333;
         overflow: hidden;
+        cursor: hand;
+    }
+
+    div#overall-container img {
+        cursor: default;
     }
 
     div.tooltip {
@@ -81,6 +86,8 @@
 </body>
 </html>
 <script type="text/javascript">
+
+document.body.style.cursor = "move";
 
 var positonContena = [];
 
@@ -317,6 +324,12 @@ var DHTMLSprite = function (params, parent) {
     var url = params.url;
     if (url) {
         $element.click(function () {
+            $('path').each(function(idx, line) {
+                var strokeWidth = $(line).attr('stroke-width');
+                if (strokeWidth == 2) {
+                    $(line).remove();
+                }
+            });
             $('path').each(function(idx, line) {
                 var strokeWidth = $(line).attr('stroke-width');
                 if (strokeWidth == 2) {

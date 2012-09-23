@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+<body>
+<div style="border:1px solid #777777; width:1000px; height:800px; top:0px; left:20px; position:absolute;">
+    <div style="z-index: 0; position: absolute; border-width: 0px; overflow: hidden; background-color: rgb(236, 236, 224); width: 500px; height: 300px; ">
+        <div style="z-index: 300; position: absolute; top: 30px; left: 50px; " id="left-top-point">
+            <div style="z-index: 10; position: absolute; ">ssssssssssssss</div>
+        </div>
+    </div>
+    <div id="IBox" style="top:0px; left:1140px; position:absolute;">
+        横：<input type="text" id="lr" size="5" value="100">&nbsp;
+        縦：<input type="text" id="ud" size="5" value="100">
+        <input type="button" value="move" onclick="move();">
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var move = function() {
+        var moveX = Number($("#lr").val());
+        var moveY = Number($("#ud").val());
+        console.log("move : " + moveX + " : " + moveY);
+        var currentTop = $("#left-top-point").css("top");
+        var currentLeft = $("#left-top-point").css("left");
+
+        var top = Number(currentTop.replace("px", ""));
+        var left = Number(currentLeft.replace("px", ""));
+
+//        $("#left-top-point").css("top", top + moveX);
+//        $("#left-top-point").css("left", left + moveY);
+       $("#left-top-point").animate({
+            top: top + moveX,
+            left: left + moveY
+       });
+    };
+</script>
