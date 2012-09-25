@@ -2,6 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <title></title>
 </head>
 <!--<script type="text/javascript"-->
@@ -116,6 +119,8 @@ $(document).ready(function () {
     //simple_tooltip("div","tooltip");
 });
 
+var itemMouseOver = false;
+
 var DHTMLSprite = function (params, parent) {
     // itemが既に存在しているかどうかチェックする
     if (checkItemExist(positonContena, params.x, params.y)) {
@@ -132,8 +137,15 @@ var DHTMLSprite = function (params, parent) {
     var $element = params.$drawTarget.append('<div/>').find(':last').append('<img src="' + params.image + '"><div style="min-width: 150px;">' + itemName + '</div>');
     var elemStyle = $element[0].style;
 
-    elemStyle.left = params.x + 'px';
-    elemStyle.top = params.y + 'px';
+    if (itemMouseOver) {
+
+        elemStyle.left = Number(params.x) + 10 + 'px';
+        elemStyle.top = Number(params.y) + 10 + 'px';
+    }
+    else {
+        elemStyle.left = params.x + 'px';
+        elemStyle.top = params.y + 'px';
+    }
 
     $element.css({
         position:'absolute',
@@ -209,7 +221,14 @@ var DHTMLSprite = function (params, parent) {
 //        img.css({opacity: 0.5});
         //simple_tooltip(img,"tooltip");
         var oriImagePath;
+        var parentDiv = $(img).parent();
+        var origTop = Number($(parentDiv).css('top').replace('px', ''));
+        var origLeft = Number($(parentDiv).css('left').replace('px', ''));
+
         $(img).hover(function () {
+                    itemMouseOver = true;
+                    $(parentDiv).css('top', origTop - 10);
+                    $(parentDiv).css('left', origLeft - 10);
                     var imagePath = $(this).attr('src');
                     oriImagePath = imagePath;
                     var lastIndex = imagePath.lastIndexOf('/');
@@ -220,6 +239,9 @@ var DHTMLSprite = function (params, parent) {
                 },
                 function () {
                     $(img).attr('src', oriImagePath);
+                    $(parentDiv).css('top', origTop);
+                    $(parentDiv).css('left', origLeft);
+                    itemMouseOver = false;
 //                    $(this).css({
 //                        opacity:0.5
 //                    });
@@ -246,12 +268,8 @@ var DHTMLSprite = function (params, parent) {
             var childItem = $.data($element, "childItem");
             var childVisible = $.data($element, "childVisible");
             if (childItem) {
-                $('path').each(function(idx, line) {
-                    var strokeWidth = $(line).attr('stroke-width');
-                    if (strokeWidth == 2) {
-                        $(line).remove();
-                    }
-                });
+                removeThickLine();
+
                 if (childVisible) {
                     $(childItem).each(function (index, item) {
                         makeChildItemInvisible(item);
@@ -288,15 +306,10 @@ var DHTMLSprite = function (params, parent) {
 //
                 var parentLeft = Number(parent.getElemStyle().left.replace("px", ""));
                 var parentTop = Number(parent.getElemStyle().top.replace("px", ""));
-                $('path').each(function(idx, line) {
-                    var strokeWidth = $(line).attr('stroke-width');
-                    if (strokeWidth == 2) {
-                        $(line).remove();
-                    }
-                });
+                removeThickLine();
 
                 var temElem = parent.getElement();
-                if ($(temElem).find('img').attr('src') === 'images/base_drill.jpg' ) {
+                if ($(temElem).find('img').attr('src').indexOf('images/base_drill.jpg') != -1) {
                     parentLeft += 20;
                     parentTop += 40;
                     var baseline = drawSVGLine(left, top, parentLeft, parentTop, 2);
@@ -324,18 +337,7 @@ var DHTMLSprite = function (params, parent) {
     var url = params.url;
     if (url) {
         $element.click(function () {
-            $('path').each(function(idx, line) {
-                var strokeWidth = $(line).attr('stroke-width');
-                if (strokeWidth == 2) {
-                    $(line).remove();
-                }
-            });
-            $('path').each(function(idx, line) {
-                var strokeWidth = $(line).attr('stroke-width');
-                if (strokeWidth == 2) {
-                    $(line).remove();
-                }
-            });
+            removeThickLine();
             var top = elemStyle.top;
             top = Number(top.replace("px", ""));
             var left = elemStyle.left;
@@ -360,13 +362,24 @@ var drawLineChildToParent = function (sprite) {
     var left = Number(sprite.getElemStyle().left.replace("px", ""));
     var top = Number(sprite.getElemStyle().top.replace("px", ""));
 
+    if (itemMouseOver) {
+        left -= 0;
+        top -= 0;
+    }
+
     var parentSprite = sprite.getParent();
     if (parentSprite) {
         var parentLeft = Number(parentSprite.getElemStyle().left.replace("px", ""));
         var parentTop = Number(parentSprite.getElemStyle().top.replace("px", ""));
 
+
+        if (itemMouseOver) {
+            parentLeft -= 0;
+            parentTop -= 0;
+        }
+
         var parentElem = parentSprite.getElement();
-        if ($(parentElem).find('img').attr('src') === 'images/base_drill.jpg' ) {
+        if ($(parentElem).find('img').attr('src').indexOf('images/base_drill.jpg') != -1) {
             parentLeft += 20;
             parentTop += 40;
             setTimeout(function () {
@@ -495,10 +508,19 @@ var drawSVGLine = function (beginX, beginY, endX, endY, strokeWidth) {
 
     var margin = 2000;
 
-    beginX = Number(beginX) + margin + 30;
-    beginY = Number(beginY) + margin + 30;
-    endX = Number(endX) + margin + 30;
-    endY = Number(endY) + margin + 30;
+    if(itemMouseOver) {
+        beginX = Number(beginX) + margin + 30;
+        beginY = Number(beginY) + margin + 30;
+        endX = Number(endX) + margin + 30;
+        endY = Number(endY) + margin + 30;
+    }
+    else {
+        beginX = Number(beginX) + margin + 30;
+        beginY = Number(beginY) + margin + 30;
+        endX = Number(endX) + margin + 30;
+        endY = Number(endY) + margin + 30;
+    }
+
 
     //var line = rapheal.line(beginX, beginY, endX, endY, {stroke: '#999999', strokeWidth: 0.3});
     var line = rapheal.path("M " + beginX + " " + beginY + " " + beginX +" " + beginY); //, {stroke:'#999999', strokeWidth:0.3});
@@ -511,6 +533,21 @@ var drawSVGLine = function (beginX, beginY, endX, endY, strokeWidth) {
     //var params = {svgX2:endX, svgY2:endY};
     line.animate({path:"M " + beginX + " " + beginY + " " + endX + " " + endY}, 1000);
     return line;
+}
+
+var removeThickLine = function() {
+    $('path').each(function(idx, line) {
+        var strokeWidth = $(line).attr('stroke-width');
+        if (strokeWidth == 2) {
+            $(line).remove();
+        }
+    });
+    $('.rvml').each(function(idx, line) {
+        var strokeWidth = line.getAttribute('strokeweight');
+        if (Number(strokeWidth) > 1) {
+            $(line).remove();
+        }
+    });
 }
 
 var simple_tooltip = function (target_items, name) {
