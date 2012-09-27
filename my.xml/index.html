@@ -209,6 +209,21 @@ var DHTMLSprite = function (params, parent) {
         var oriImagePath;
         var parentDiv = $(img).parent();
 
+        var imagePath = $(img).attr('src');
+        oriImagePath = imagePath;
+        var lastIndex = imagePath.lastIndexOf('/');
+        var firstPart = imagePath.slice(0, lastIndex);
+        var secondPart = 'b_' + imagePath.slice(lastIndex + 1);
+        imagePath = firstPart + '/' + secondPart;
+        $(img).attr('src', imagePath);
+        $(parentDiv).css('position', 'absolute');
+        $(parentDiv).css('top', -10);
+        $(parentDiv).css('left', -10);
+        $(img).attr('src', oriImagePath);
+        $(parentDiv).css('position', 'absolute');
+        $(parentDiv).css('top', 0);
+        $(parentDiv).css('left', 0);
+
         $(img).hover(function () {
                     var imagePath = $(this).attr('src');
                     oriImagePath = imagePath;
